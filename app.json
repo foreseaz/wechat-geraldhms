@@ -1,0 +1,32 @@
+{
+  "name": "wechat-starter demo",
+  "repository": "https://github.com/goofansu/wechat-starter",
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "env": {
+    "wechat_app_id": "公众号AppId",
+    "wechat_secret": "公众号AppSecret",
+    "wechat_token": "公众号Token",
+    "wechat_encrypt_mode": "消息是否加密，是填true，否则填false",
+    "wechat_encoding_aes_key": {
+      "description": "公众号EncodingAESKey，测试号留空",
+      "required": false
+    },
+    "wechat_pay_mch_id": {
+      "description": "商户号，在微信支付中查看，没有就留空",
+      "required": false
+    },
+    "wechat_pay_api_key": {
+      "description": "微信支付的API KEY，没有就留空",
+      "required": false
+    },
+    "wechat_pay_notify_url": {
+      "description": "http://your.app.domain/wx_notify",
+      "required": false
+    }
+  },
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  }
+}

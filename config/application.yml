@@ -1,0 +1,6 @@
+# We just provide a minimal testing public account in order to let testing pass.
+wechat_app_id: "wxf39aee404eeb32de"
+wechat_secret: "9ff6f720a7853d05a16a026ae8a6d64d"
+wechat_token:  "544c8656b1ee34c405a98d81d9bdfa11"
+wechat_encoding_aes_key: "v69gOQgvTDXxL5itvZiyyEuvRjV9ZuHvPXyMmlAiWKD"
+# wechat_trusted_domain_fullname: "http://foreseaz.localtunnel.me"
