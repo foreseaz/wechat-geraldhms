@@ -1,44 +1,63 @@
-<script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
-<%= wechat_config_js debug: true, api: %w(hideMenuItems closeWindow chooseWXPay) -%>
-<script type="application/javascript">
- wx.ready(function() {
-   wx.hideOptionMenu();
- });
-</script>
+<header id="home">
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+          <h1 class="animated fadeInDown" style="color: white;">Gerald's<br><span style="color: white;">Hotel Manage System</span></h1>
+          <p class="animated fadeInUp delay-05s" style="color: white;">Find you a room and manage your order easily!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-md-offset-3 text-center">
+          <a href="/room" class="learn-more-btn">Find Your Room</a>
+        </div>
+        <div class="col-md-3 text-center">
+          <a href="/manage" class="learn-more-btn">Login with Wechat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
 
-<div class="weui_msg">
-  <div class="weui_text_area">
-    <h1 class="weui_msg_title">Hello, <%= current_user.nickname %></h1>
-    <img src="<%= current_user.avatar %>" width="128" height="128">
+<section class="dark-bg text-center section-padding contact-wrap" id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="arrow">Infos</h1>
+      </div>
+    </div>
+    <div class="row contact-details">
+      <div class="col-md-4">
+        <div class="light-box box-hover">
+          <h2><i class="fa fa-map-marker"></i><span>Address</span></h2>
+          <p>Level 6, 23 Pitt St, Portugal</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="light-box box-hover">
+          <h2><i class="fa fa-mobile"></i><span>Phone</span></h2>
+          <p>+61 9 211 3747</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="light-box box-hover">
+          <h2><i class="fa fa-paper-plane"></i><span>Email</span></h2>
+          <p><a href="#">support@geraldhotel.com</a></p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="weui_opr_area">
-    <p class="weui_btn_area">
-      <% if Figaro.env.wechat_pay_mch_id %>
-        <a href="javascript:wxpay();" class="weui_btn weui_btn_primary">Try wechat pay!</a>
-      <% end %>
-      <a href="javascript:wx.closeWindow();" class="weui_btn weui_btn_plain_default">Close</a>
-    </p>
-  </div>
-</div>
+</section>
 
-<% if Figaro.env.wechat_pay_mch_id %>
-  <script>
-   function wxpay() {
-     $.post('/wx_pay', function(data) {
-       wx.chooseWXPay({
-         timestamp: data.timeStamp,
-         nonceStr: data.nonceStr,
-         package: data.package,
-         signType: data.signType,
-         paySign: data.paySign,
-         success: function (res) {
-           alert(JSON.stringify(res));
-         },
-         error: function(e) {
-           alert(JSON.stringify(e));
-         }
-       });
-     });
-   }
-  </script>
-<% end %>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="legals">
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Legals</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
