@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   layout 'wechat'
-  def search 
+
+  def book
   end
 end
