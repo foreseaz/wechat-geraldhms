@@ -1,8 +1,3 @@
-room-nav {
-  display: flex;
-  /*position: absolute;*/
-  /*z-index: 500;*/
-  top: 0;
-  width: 100%;
-  background-color: #fafafa;
+.page {
+  background-color: #f8f8f8;
 }

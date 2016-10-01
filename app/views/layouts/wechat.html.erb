@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title>WeUI</title>
-    <!-- <link rel="stylesheet" href="css/weui.css" media="screen" title="no title" charset="utf-8"> -->
+    <link rel="stylesheet" href="css/weui.css" media="screen" title="no title" charset="utf-8">
     <script src="http://cdnjs.gtimg.com/cdnjs/libs/zepto/1.1.4/zepto.min.js"></script>
     <link rel="stylesheet" href="//cdn.bootcss.com/weui/0.4.3/style/weui.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/0.8.0/css/jquery-weui.min.css">
@@ -12,8 +12,20 @@
     <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/jquery-weui/0.8.0/js/jquery-weui.min.js"></script>
     <script src="//cdn.bootcss.com/jquery-weui/0.8.0/js/swiper.min.js"></script>
+    <style media="screen">
+      body {
+        background-color: #f8f8f8;
+      }
+    </style>
 </head>
 <body ontouchstart>
   <%= yield %>
+
+  <div class="weui-footer" style="margin-top:20px">
+      <p class="weui-footer__links">
+          <a href="/" class="weui-footer__link">Gerald HMS</a>
+      </p>
+      <p class="weui-footer__text">Copyright &copy; 2016 geraldhms</p>
+  </div>
 </body>
 </html>

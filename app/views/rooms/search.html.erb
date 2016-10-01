@@ -6,6 +6,10 @@
     display: block;
     width: 100%;
   }
+  .weui_label {
+    font-size: 0.9em;
+    color: #8f8f8f;
+  }
 </style>
 
 <div class="swiper-container">
@@ -18,6 +22,90 @@
   </div>
   <!-- If we need pagination -->
   <div class="swiper-pagination"></div>
+</div>
+
+<div class="weui_cells_title">Room Type</div>
+<div class="weui_cells weui_cells_radio">
+  <label class="weui_cell weui_check_label" for="x11">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>Single Room</p>
+    </div>
+    <div class="weui_cell_ft">
+      <input type="radio" class="weui_check" name="radio1" id="x11" checked="checked">
+      <span class="weui_icon_checked"></span>
+    </div>
+  </label>
+
+  <label class="weui_cell weui_check_label" for="x12">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>Double Room</p>
+    </div>
+    <div class="weui_cell_ft">
+      <input type="radio" name="radio1" class="weui_check" id="x12">
+      <span class="weui_icon_checked"></span>
+    </div>
+  </label>
+
+  <label class="weui_cell weui_check_label" for="x13">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>Studio Room</p>
+    </div>
+    <div class="weui_cell_ft">
+      <input type="radio" name="radio1" class="weui_check" id="x13">
+      <span class="weui_icon_checked"></span>
+    </div>
+  </label>
+</div>
+
+<div class="weui_cells_title">Duration</div>
+<div class="weui_cells weui_cells_form">
+  <div class="weui_cell">
+    <div class="weui_cell_hd"><label for="" class="weui_label">Check-in Date</label></div>
+    <div class="weui_cell_bd weui_cell_primary">
+      <input class="weui_input" type="date" value="">
+    </div>
+  </div>
+  <div class="weui_cell">
+    <div class="weui_cell_hd"><label for="" class="weui_label">Leave Date</label></div>
+    <div class="weui_cell_bd weui_cell_primary">
+      <input class="weui_input" type="date" value="">
+    </div>
+  </div>
+</div>
+
+<div class="weui_cells_title">Floor</div>
+<div class="weui_cells weui_cells_form">
+  <div class="weui_cell weui_cell_select">
+    <div class="weui_cell_bd weui_cell_primary">
+      <select class="weui_select" name="select1">
+        <option selected="" value="0">Choose Floor</option>
+        <option value="3">3F</option>
+        <option value="4">4F</option>
+        <option value="5">5F</option>
+        <option value="6">6F</option>
+        <option value="7">7F</option>
+        <option value="8">8F</option>
+        <option value="9">9F</option>
+        <option value="10">10F</option>
+        <option value="11">11F</option>
+        <option value="12">12F</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="weui_cells_title">Further Requirements</div>
+<div class="weui_cells weui_cells_form">
+  <div class="weui_cell">
+    <div class="weui_cell_bd weui_cell_primary">
+      <textarea class="weui_textarea" placeholder="Please enter your further requirements" rows="5"></textarea>
+      <!-- <div class="weui_textarea_counter"><span>0</span>/200</div> -->
+    </div>
+  </div>
+</div>
+
+<div class="weui-btn-area">
+  <a href="javascript:;" class="weui_btn weui_btn_primary">Submit</a>
 </div>
 
 <script>
