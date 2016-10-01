@@ -9,6 +9,6 @@ Rails.application.routes.draw do
                registrations: 'users/registrations'
              }
 
-  get '/search' => 'rooms#search'
+  get '/book' => 'rooms#search'
   get '/profile' => 'profile#manage'
 end
