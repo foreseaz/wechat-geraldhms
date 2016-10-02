@@ -110,7 +110,7 @@
 </div>
 
 <div class="weui-btn-area">
-  <a href="javascript:;" class="weui_btn weui_btn_primary">Submit</a>
+  <a href="javascript:;" class="weui_btn weui_btn_primary" id="button">Submit</a>
 </div>
 
 <script>
@@ -118,4 +118,37 @@
     loop: true,
     // autoplay: 3000
   });
+
+  $(function(){
+    $('#button').on('click', function(){
+      var data = $('form').serialize();
+      var content = JSON.stringify(data).replace(/"/gi, '').replace(/&/gi, '<br>');
+      $.weui.alert(content);
+      $.post('/api/v1/user', data).error(function(err){
+        console.log(err);
+      });
+    });
+  });
+
+  document.body.setAttribute('ontouchstart', '');
+  // android
+  //document.title = "WeUI表单序列化示例";
+
+  // iOS
+  if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+      callback();
+  } else {
+      if (document.addEventListener) {
+          document.addEventListener("WeixinJSBridgeReady", callback, false);
+      } else if (document.attachEvent) {
+          document.attachEvent("WeixinJSBridgeReady", callback);
+          document.attachEvent("onWeixinJSBridgeReady", callback);
+      }
+  }
+
+  function callback(){
+    WeixinJSBridge.invoke('setPageTitle', {title: '测试测试测试'}, function(res){
+      $.weui.alert(res.err_msg);
+    });
+  }
 </script>
