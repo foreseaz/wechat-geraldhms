@@ -2,6 +2,25 @@
   if (location.href.indexOf('reload') > 0) {
     window.location.replace(location.origin + location.pathname);
   }
+  // serializeFormJSON
+  (function ($) {
+    $.fn.serializeFormJSON = function () {
+
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+  })(jQuery);
 </script>
 <style>
   .swiper-container {
@@ -29,89 +48,91 @@
   <div class="swiper-pagination"></div>
 </div>
 
-<div class="weui_cells_title">Room Type</div>
-<div class="weui_cells weui_cells_radio">
-  <label class="weui_cell weui_check_label" for="x11">
-    <div class="weui_cell_bd weui_cell_primary">
-      <p>Single Room</p>
-    </div>
-    <div class="weui_cell_ft">
-      <input type="radio" class="weui_check" name="radio1" id="x11" checked="checked">
-      <span class="weui_icon_checked"></span>
-    </div>
-  </label>
+<form class="" method="post">
+  <div class="weui_cells_title">Room Type</div>
+  <div class="weui_cells weui_cells_radio">
+    <label class="weui_cell weui_check_label" for="x11">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>Single Room</p>
+      </div>
+      <div class="weui_cell_ft">
+        <input type="radio" class="weui_check" value="single" name="room_type" id="x11" checked="checked">
+        <span class="weui_icon_checked"></span>
+      </div>
+    </label>
 
-  <label class="weui_cell weui_check_label" for="x12">
-    <div class="weui_cell_bd weui_cell_primary">
-      <p>Double Room</p>
-    </div>
-    <div class="weui_cell_ft">
-      <input type="radio" name="radio1" class="weui_check" id="x12">
-      <span class="weui_icon_checked"></span>
-    </div>
-  </label>
+    <label class="weui_cell weui_check_label" for="x12">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>Double Room</p>
+      </div>
+      <div class="weui_cell_ft">
+        <input type="radio" name="room_type" value="double" class="weui_check" id="x12">
+        <span class="weui_icon_checked"></span>
+      </div>
+    </label>
 
-  <label class="weui_cell weui_check_label" for="x13">
-    <div class="weui_cell_bd weui_cell_primary">
-      <p>Studio Room</p>
-    </div>
-    <div class="weui_cell_ft">
-      <input type="radio" name="radio1" class="weui_check" id="x13">
-      <span class="weui_icon_checked"></span>
-    </div>
-  </label>
-</div>
+    <label class="weui_cell weui_check_label" for="x13">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>Studio Room</p>
+      </div>
+      <div class="weui_cell_ft">
+        <input type="radio" name="room_type" value="studio" class="weui_check" id="x13">
+        <span class="weui_icon_checked"></span>
+      </div>
+    </label>
+  </div>
 
-<div class="weui_cells_title">Duration</div>
-<div class="weui_cells weui_cells_form">
-  <div class="weui_cell">
-    <div class="weui_cell_hd"><label for="" class="weui_label">Check-in Date</label></div>
-    <div class="weui_cell_bd weui_cell_primary">
-      <input class="weui_input" type="date" value="">
+  <div class="weui_cells_title">Duration</div>
+  <div class="weui_cells weui_cells_form">
+    <div class="weui_cell">
+      <div class="weui_cell_hd"><label for="" class="weui_label">Check-in at</label></div>
+      <div class="weui_cell_bd weui_cell_primary">
+        <input class="weui_input" name="checkin_date" type="month" value="">
+      </div>
+    </div>
+    <div class="weui_cell">
+      <div class="weui_cell_hd"><label for="" class="weui_label">Leave at</label></div>
+      <div class="weui_cell_bd weui_cell_primary">
+        <input class="weui_input" name="leave_date" type="month" value="">
+      </div>
     </div>
   </div>
-  <div class="weui_cell">
-    <div class="weui_cell_hd"><label for="" class="weui_label">Leave Date</label></div>
-    <div class="weui_cell_bd weui_cell_primary">
-      <input class="weui_input" type="date" value="">
+
+  <div class="weui_cells_title">Floor</div>
+  <div class="weui_cells weui_cells_form">
+    <div class="weui_cell weui_cell_select weui_cell_warn">
+      <div class="weui_cell_bd weui_cell_primary">
+        <select class="weui_select" name="floor">
+          <option selected="" value="0">Choose Floor</option>
+          <option value="3">3F</option>
+          <option value="4">4F</option>
+          <option value="5">5F</option>
+          <option value="6">6F</option>
+          <option value="7">7F</option>
+          <option value="8">8F</option>
+          <option value="9">9F</option>
+          <option value="10">10F</option>
+          <option value="11">11F</option>
+          <option value="12">12F</option>
+        </select>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="weui_cells_title">Floor</div>
-<div class="weui_cells weui_cells_form">
-  <div class="weui_cell weui_cell_select">
-    <div class="weui_cell_bd weui_cell_primary">
-      <select class="weui_select" name="select1">
-        <option selected="" value="0">Choose Floor</option>
-        <option value="3">3F</option>
-        <option value="4">4F</option>
-        <option value="5">5F</option>
-        <option value="6">6F</option>
-        <option value="7">7F</option>
-        <option value="8">8F</option>
-        <option value="9">9F</option>
-        <option value="10">10F</option>
-        <option value="11">11F</option>
-        <option value="12">12F</option>
-      </select>
+  <div class="weui_cells_title">Further Requirements</div>
+  <div class="weui_cells weui_cells_form">
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <textarea name="requirement" class="weui_textarea" placeholder="Please enter your further requirements" rows="5"></textarea>
+        <!-- <div class="weui_textarea_counter"><span>0</span>/200</div> -->
+      </div>
     </div>
   </div>
-</div>
 
-<div class="weui_cells_title">Further Requirements</div>
-<div class="weui_cells weui_cells_form">
-  <div class="weui_cell">
-    <div class="weui_cell_bd weui_cell_primary">
-      <textarea class="weui_textarea" placeholder="Please enter your further requirements" rows="5"></textarea>
-      <!-- <div class="weui_textarea_counter"><span>0</span>/200</div> -->
-    </div>
+  <div class="weui-btn-area">
+    <a href="javascript:;" class="weui_btn weui_btn_primary" id="submit">Submit</a>
   </div>
-</div>
-
-<div class="weui-btn-area">
-  <a href="javascript:;" class="weui_btn weui_btn_primary" id="button">Submit</a>
-</div>
+</form>
 
 <script>
   $(".swiper-container").swiper({
@@ -119,11 +140,57 @@
     // autoplay: 3000
   });
 
+  function validate_pass(data) {
+    var passed = false
+    if (data.checkin_date == "") {
+      var err = "Checkin date should not be empty"
+      return {passed, err}
+    } else if (data.checkin_date < Date.now()) {
+      var err = "The ealiest checkin date is next month"
+      return {passed, err}
+    }
+    if (data.leave_date == "") {
+      var err = "Leave date should not be empty"
+      return {passed, err}
+    } else if (data.leave_date <= data.checkin_date) {
+      var err = "Leave date should later than your checkin date"
+      return {passed, err}
+    }
+    if (data.floor == "0") {
+      var err = "Floor should not be empty"
+      return {passed, err}
+    }
+
+    console.log(data);
+    passed = true
+    return {passed, err}
+  }
+
+  function tidy_date(data) {
+    var d = data
+    if (d.checkin_date !== "" && d.leave_date !== "") {
+      var c = d.checkin_date.split('-')
+      var l = d.leave_date.split('-')
+
+      d.checkin_date = new Date(c[0], parseInt(c[1])-1)
+      // leave date should be the 1st day of month
+      d.leave_date = new Date(l[0], parseInt(l[1]))
+    }
+
+    console.log(d);
+    return d
+  }
+
   $(function(){
-    $('#button').on('click', function(){
-      var data = $('form').serialize();
-      var content = JSON.stringify(data).replace(/"/gi, '').replace(/&/gi, '<br>');
-      $.weui.alert(content);
+    $('#submit').on('click', function(){
+      var data = tidy_date($('form').serializeFormJSON());
+
+      var validation = validate_pass(data);
+      if (!validation.passed) {
+        $.alert(validation.err, "Alert");
+        return;
+      }
+
       $.post('/api/v1/user', data).error(function(err){
         console.log(err);
       });
@@ -131,8 +198,6 @@
   });
 
   document.body.setAttribute('ontouchstart', '');
-  // android
-  //document.title = "WeUI表单序列化示例";
 
   // iOS
   if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
