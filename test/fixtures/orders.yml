@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room_type: MyString
+  checkin: 2016-10-07
+  leaveat: 2016-10-07
+  floor: MyString
+  requirement: MyText
+  user: one
+
+two:
+  room_type: MyString
+  checkin: 2016-10-07
+  leaveat: 2016-10-07
+  floor: MyString
+  requirement: MyText
+  user: two

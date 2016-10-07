@@ -49,6 +49,7 @@
 </div>
 
 <form class="" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <div class="weui_cells_title">Room Type</div>
   <div class="weui_cells weui_cells_radio">
     <label class="weui_cell weui_check_label" for="x11">
@@ -161,7 +162,6 @@
       return {passed, err}
     }
 
-    console.log(data);
     passed = true
     return {passed, err}
   }
@@ -173,11 +173,10 @@
       var l = d.leave_date.split('-')
 
       d.checkin_date = new Date(c[0], parseInt(c[1])-1)
-      // leave date should be the 1st day of month
+      // leave date should be the last day of the month
       d.leave_date = new Date(l[0], parseInt(l[1]))
+      d.leave_date.setDate(d.leave_date.getDate() - 1)
     }
-
-    console.log(d);
     return d
   }
 
@@ -191,8 +190,10 @@
         return;
       }
 
-      $.post('/api/v1/user', data).error(function(err){
+      $.post('/check', data).error(function(err){
         console.log(err);
+      }).done(function(res) {
+        console.log(res);
       });
     });
   });

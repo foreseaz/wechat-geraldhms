@@ -10,5 +10,7 @@ Rails.application.routes.draw do
              }
 
   get '/book' => 'rooms#book'
+  post '/check' => 'rooms#check'
+  
   get '/profile' => 'profile#manage'
 end
