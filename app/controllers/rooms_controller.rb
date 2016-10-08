@@ -1,6 +1,12 @@
 class RoomsController < ApplicationController
-  layout 'wechat'
+  before_action :authenticate_user!
+  wechat_api
+  before_action :set_user
+  def set_user
+    @user = current_user
+  end
 
+  layout 'wechat'
   def book
   end
 

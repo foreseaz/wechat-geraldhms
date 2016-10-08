@@ -1,5 +1,5 @@
 <div class="profile">
-  <div class="weui_cells_title">Profile</div>
+  <div class="weui_cells_title">Your Profile</div>
   <div class="weui_cells">
     <div class="weui_cell" id="avatarCell">
       <div class="weui_cell_bd weui_cell_primary">
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div class="weui_cells_title">Orders</div>
+  <div class="weui_cells_title">Your Orders</div>
   <div class="weui_cells weui_cells_access">
     <% @user.orders.each do |o| %>
     <a class="weui_cell" href="/order/<%= o.id %>">
@@ -39,5 +39,9 @@
       </div>
     </a>
     <% end %>
+  </div>
+
+  <div class="weui-btn-area">
+    <a href="/book" class="weui_btn weui_btn_default">Book Room</a>
   </div>
 </div>
