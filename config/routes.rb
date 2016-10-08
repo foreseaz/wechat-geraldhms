@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get '/book' => 'rooms#book'
   post '/check' => 'rooms#check'
-  
-  get '/profile' => 'profile#manage'
+
+  get '/manage' => 'profile#manage'
+  get '/order/:id' => 'profile#order'
+  get 'delete_order/:id' => 'profile#delete_order'
 end

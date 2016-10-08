@@ -1,0 +1,43 @@
+<div><img style="width: 100%; height: auto;" src=<%= "/img/#{@order.room_type}.jpg" %> /></div>
+<!-- <div class="weui_msg">
+  <div class="weui_icon_area"><i class="weui_icon_msg weui_icon_warn"></i></div>
+</div> -->
+<br>
+<div class="weui-form-preview">
+  <div class="weui-form-preview__hd">
+    <label class="weui-form-preview__label">Room</label>
+    <em class="weui-form-preview__value"><%= @order.floor+'F ' + @order.room_type.capitalize %></em>
+  </div>
+  <div class="weui-form-preview__bd">
+    <p>
+      <label class="weui-form-preview__label">Checkin Date</label>
+      <span class="weui-form-preview__value"><%= @order.checkin %></span>
+    </p>
+    <p>
+      <label class="weui-form-preview__label">Leave Date</label>
+      <span class="weui-form-preview__value"><%= @order.leaveat %></span>
+    </p>
+    <p>
+      <label class="weui-form-preview__label">Requirements</label>
+      <span class="weui-form-preview__value"><%= @order.requirement.blank? ? "None" : @order.requirement%></span>
+    </p>
+  </div>
+  <div class="weui-form-preview__ft">
+    <a class="weui-form-preview__btn weui-form-preview__btn_default" href="/manage">Back</a>
+    <a class="weui-form-preview__btn weui-form-preview__btn_primary" id="delete" href="javascript:" style="color: #E64340">Delete</a>
+  </div>
+</div>
+
+<script type="text/javascript">
+$('#delete').on('click', function(){
+  $.confirm("Are you sure to delete this reservation?", function(){
+    delete_url = '/delete_order/' + <%= @order.id %>
+    $.get(delete_url).done(function(res){
+      $.alert(res.msg, 'Alert', function(){
+        window.location.replace(location.origin + '/manage');
+      })
+    })
+  });
+})
+
+</script>

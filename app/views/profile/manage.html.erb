@@ -1,14 +1,43 @@
-<div class="weui_msg">
-  <div class="weui_text_area">
-    <h1 class="weui_msg_title">Hello, <%= current_user.nickname %></h1>
-    <img src="<%= current_user.avatar %>" width="128" height="128">
+<div class="profile">
+  <div class="weui_cells_title">Profile</div>
+  <div class="weui_cells">
+    <div class="weui_cell" id="avatarCell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>Avatar</p>
+      </div>
+      <div class="weui_cell_ft">
+        <img src="<%= @user.avatar %>" width="64" height="64">
+      </div>
+    </div>
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>Name</p>
+      </div>
+      <div class="weui_cell_ft">
+        <%= @user.nickname %>
+      </div>
+    </div>
+    <div class="weui_cell">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p>Sex</p>
+      </div>
+      <div class="weui_cell_ft">
+        <%= get_sex @user.sex %>
+      </div>
+    </div>
   </div>
-  <div class="weui_opr_area">
-    <p class="weui_btn_area">
-      <% if Figaro.env.wechat_pay_mch_id %>
-        <a href="javascript:wxpay();" class="weui_btn weui_btn_primary">Try wechat pay!</a>
-      <% end %>
-      <a href="javascript:wx.closeWindow();" class="weui_btn weui_btn_plain_default">Close</a>
-    </p>
+
+  <div class="weui_cells_title">Orders</div>
+  <div class="weui_cells weui_cells_access">
+    <% @user.orders.each do |o| %>
+    <a class="weui_cell" href="/order/<%= o.id %>">
+      <div class="weui_cell_bd weui_cell_primary">
+        <p><%= o.checkin %> - <%= o.leaveat%></p>
+      </div>
+      <div class="weui_cell_ft">
+        <%= o.room_type.capitalize %> <%= o.floor %>F
+      </div>
+    </a>
+    <% end %>
   </div>
 </div>
